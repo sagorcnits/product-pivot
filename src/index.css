@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    padding: 10px 25px;
+    border: none;
+    background-color: #2ca48b;
+    cursor: pointer;
+    color: white;
+    transition: all 0.5s;
+    border-radius: 5px;
+  }
+
+  .button:hover {
+    background-color: black;
+  }
+}
