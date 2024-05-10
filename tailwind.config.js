@@ -7,6 +7,7 @@ export default {
         "text-medium": "#444",
         "paragraph-text": "#737373",
         "title-color": "#151515",
+        bgColor: "#2ca48b",
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],

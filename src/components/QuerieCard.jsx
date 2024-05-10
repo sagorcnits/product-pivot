@@ -4,13 +4,13 @@ const imgUrl =
 
 const QuerieCard = () => {
   return (
-    <div className="flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 hover:-translate-y-6">
+    <div className="flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 hover:-translate-y-6 hover:border border-bgColor">
       <div>
        <figure className="rounded-md overflow-hidden">
          <img src={imgUrl} alt="" />
        </figure>
         <h2 className="mb-1 text-xl font-semibold py-2">
-          Nam cu platonem posidonium sanctus debitis te
+        Is there any Better product that gives me the same quality?
         </h2>
         <div className="flex justify-between ">
           <h1><span className="font-bold">Product Name:</span> Watch</h1>

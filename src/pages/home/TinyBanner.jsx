@@ -7,7 +7,7 @@ const TinyBanner = () => {
       style={{ backgroundImage: `url(${imgUrl})` }}
       className="rounded-md overflow-hidden  h-[200px]   bg-center bg-cover bg-no-repeat bg-blend-multiply bg-[#171718] text-center mt-10"
     >
-      <h1 className="mt-10 text-white font-Inter text-[40px]">All Queries</h1>
+      <h1 className="mt-10 text-white font-Inter text-[30px] md:text-[40px]">All Queries</h1>
       <button className="button mt-6">More Queries</button>
     </div>
   );
