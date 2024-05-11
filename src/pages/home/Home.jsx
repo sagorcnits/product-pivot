@@ -3,6 +3,7 @@ import DigitalCard from "../../components/DigitalCard";
 import QuerieCard from "../../components/QuerieCard";
 import SectionIntro from "../../components/SectionIntro";
 import TinyBanner from "./TinyBanner";
+import Upcomming from "./Upcomming";
 
 const Home = () => {
   return (
@@ -51,6 +52,9 @@ const Home = () => {
               "Get the right product information to the right places at the right time ",
           }}
         ></SectionIntro>
+        <div className="mt-10">
+            <Upcomming></Upcomming>
+        </div>
       </section>
     </main>
   );

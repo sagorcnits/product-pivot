@@ -18,8 +18,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
         autoplay={true}
         navigation
         pagination={{ clickable: true }}
-        spaceBetween={50}
-        slidesPerView={1}
+        breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 50,
+            },
+            1024: {
+              slidesPerView: 1,
+              spaceBetween: 50,
+            },
+          }}
       >
         <SwiperSlide>
           <div className="rounded-md overflow-hidden  md:h-[550px] h-[300px] bg-[url('https://img.freepik.com/free-photo/artisan-doing-woodcutting_23-2150600744.jpg?t=st=1714125765~exp=1714129365~hmac=a5438d9fcf92080b2e443aab8a69d35b9101fea20c4b0a462e6b347fa67ba4a6&w=740')] bg-center bg-cover bg-no-repeat bg-blend-multiply bg-[#8ba0b1] flex justify-center items-center">
