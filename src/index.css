@@ -21,4 +21,17 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
+
+  .digital-card:hover .effect {
+    transform: rotate(-180deg);
+  }
+
+  .queries-card:hover .queries-button {
+    position: absolute;
+    bottom: -260px;
+  }
+
+  .myQuery-card:hover .effect-card {
+    transform: scale(1);
+  }
 }

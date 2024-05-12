@@ -50,22 +50,27 @@ const Navbar = () => {
             <NavLink to="/">
               <li>Home</li>
             </NavLink>
-            <NavLink>
+            <NavLink to='/queries'>
               <li>Queries</li>
             </NavLink>
-            <NavLink>
+            <NavLink to='/recommendation-for-me'>
               <li>Recommendations For Me</li>
             </NavLink>
-            <NavLink>
+            <NavLink to='/myqueries'>
               <li>My Queries </li>
             </NavLink>
-            <NavLink>
+            <NavLink to='/myrecommend'>
               <li>My recommendations</li>
             </NavLink>
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="button font-Inter text-[16px] font-semibold">Log In</a>
+          <NavLink to="/login">
+            {" "}
+            <button className="button font-Inter text-[16px] font-semibold">
+              Log In
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>

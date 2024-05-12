@@ -1,9 +1,9 @@
 import {
-    A11y,
-    Autoplay,
-    Navigation,
-    Pagination,
-    Scrollbar,
+  A11y,
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
 } from "swiper/modules";
   
   import "swiper/css/bundle";
@@ -24,7 +24,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 50,
             },
             1024: {
