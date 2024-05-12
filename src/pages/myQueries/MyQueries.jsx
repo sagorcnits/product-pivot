@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import MyQueryCard from "../../components/MyQueryCard";
 import SectionIntro from "../../components/SectionIntro";
 
@@ -6,6 +6,8 @@ const imgUrl =
   "https://img.freepik.com/free-photo/online-marketing_53876-95308.jpg?t=st=1715333855~exp=1715337455~hmac=b07b2be266bee1378bab786eddbbe4e8fa7eef51c352252d5fde750f1db2320b&w=740";
 
 const MyQueries = () => {
+  const myQueriesData = useLoaderData();
+// console.log(myQueriesData)
   return (
     <div>
       <div
@@ -28,9 +30,9 @@ const MyQueries = () => {
           }}
         ></SectionIntro>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-        <MyQueryCard></MyQueryCard>
-        <MyQueryCard></MyQueryCard>
-        <MyQueryCard></MyQueryCard>
+          {myQueriesData?.map((querie, id) => (
+            <MyQueryCard key={id} querie={querie}></MyQueryCard>
+          ))}
         </div>
       </section>
     </div>

@@ -1,3 +1,4 @@
+import { useLoaderData } from "react-router-dom";
 import Banner from "../../components/Banner";
 import DigitalCard from "../../components/DigitalCard";
 import QuerieCard from "../../components/QuerieCard";
@@ -6,6 +7,10 @@ import TinyBanner from "./TinyBanner";
 import Upcomming from "./Upcomming";
 
 const Home = () => {
+
+const queriesData = useLoaderData();
+// console.log(queriesData)
+
   return (
     <main>
       <Banner></Banner>
@@ -19,12 +24,7 @@ const Home = () => {
           }}
         ></SectionIntro>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-          <QuerieCard></QuerieCard>
-          <QuerieCard></QuerieCard>
-          <QuerieCard></QuerieCard>
-          <QuerieCard></QuerieCard>
-          <QuerieCard></QuerieCard>
-          <QuerieCard></QuerieCard>
+         {queriesData?.map((querie , id) => <QuerieCard key={id} querie={querie}></QuerieCard>)}
         </div>
       </section>
       <section>

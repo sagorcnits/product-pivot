@@ -4,7 +4,7 @@ import { AuthContext } from "../../components/AuthProvider";
 
 const Navbar = () => {
   const { user, signOutUser, loaded, setLoaded } = useContext(AuthContext);
-
+  // console.log(user)
   return (
     <div className="border-b py-2">
       <div className="navbar max-w-7xl mx-auto">
@@ -47,7 +47,7 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </div>
-          <a className="font-bold text-2xl ">ProductPivot</a>
+          <a className="font-bold text-2xl">ProductPivot</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10 *:text-[16px] font-Inter font-semibold">
@@ -61,7 +61,7 @@ const Navbar = () => {
             <NavLink to="/recommendation-for-me">
               <li>Recommendations For Me</li>
             </NavLink>
-            <NavLink to="/myqueries">
+            <NavLink to={`/myqueries/${user.email}`}>
               <li>My Queries </li>
             </NavLink>
             <NavLink to="/myrecommend">

@@ -15,9 +15,8 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { signInUser, loaded, setLoaded } = useContext(AuthContext);
-
-  const submit = (data) => {
+  const { user,signInUser, loaded, setLoaded } = useContext(AuthContext);
+    const submit = (data) => {
     signInUser(data.email, data.password)
       .then((result) => {
         setLoaded(!loaded);
@@ -26,7 +25,7 @@ const Login = () => {
         toast.success("Success Your Login");
         setTimeout(() => {
           navigate("/");
-        }, 3000);
+        }, 2000);
       })
       .catch((error) => console.log(error));
   };
@@ -38,7 +37,7 @@ const Login = () => {
         <div className="mb-8 text-center">
           <div className="size-24 rounded-full border mx-auto cursor-pointer overflow-hidden">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              src={user?.photoURL}
               alt=""
             />
           </div>

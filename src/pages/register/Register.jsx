@@ -1,9 +1,11 @@
+import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../components/AuthProvider";
+import { auth } from "../../firebase";
 const Register = () => {
   const {
     register,
@@ -19,6 +21,10 @@ const Register = () => {
       .then((result) => {
         setLoaded(!loaded);
         const user = result.user;
+        updateProfile(auth.currentUser, {
+          displayName: data.name,
+          photoURL: data.photo_url,
+        });
         reset();
         toast.success("Complate Your Register Wow");
       })

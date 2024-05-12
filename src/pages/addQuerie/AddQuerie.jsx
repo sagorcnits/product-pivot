@@ -1,12 +1,50 @@
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../components/AuthProvider";
 
 const AddQuerie = () => {
+  const { user } = useContext(AuthContext);
+
+  const handleSubmit = (data) => {
+    data.preventDefault();
+
+    const form = data.target;
+    const productName = form.name.value;
+    const producBrand = form.brand.value;
+    const imageURL = form.imageURL.value;
+    const title = form.title.value;
+    const boycotting = form.boycotting.value;
+    const productInfo = {
+      productName,
+      producBrand,
+      imageURL,
+      title,
+      boycotting,
+      name: user.displayName,
+      email: user.email,
+      image: user.photoURL,
+      date: new Date(),
+      recommendationCount: 0,
+    };
+
+// data post server 
+    axios.post("http://localhost:5000/addquery", productInfo)
+    .then(res => {
+      console.log(res.data)
+    }).catch(error => {
+      console.log(error)
+    })
+   
+  };
+
+  // console.log(user);
   return (
     <div className="w-full flex justify-center ">
       <div className="md:w-[520px] w-full p-6 rounded-md  border">
         <div className="mb-8 text-center">
           <h1 className="text-[30px]  font-Inter font-bold">Add Query</h1>
         </div>
-        <form className="space-y-12 font-Inter ">
+        <form className="space-y-12 font-Inter" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div className="flex gap-4">
               <div>
@@ -30,7 +68,7 @@ const AddQuerie = () => {
               <div>
                 <input
                   type="text"
-                  name="image-url"
+                  name="imageURL"
                   placeholder="Product Image-URL"
                   className="w-full px-3 py-2 border rounded-md "
                 />
