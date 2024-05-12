@@ -10,9 +10,19 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const {createUser} = useContext(AuthContext)
+  const { createUser, setLoaded, loaded } = useContext(AuthContext);
 
-
+  const submit = (data) => {
+    createUser(data.email, data.password)
+      .then((result) => {
+        setLoaded(!loaded)
+        const user = result.user;
+        reset()
+      })
+      .catch((error) => {
+        console.log(error.meassage);
+      });
+  };
 
   return (
     <div className="w-full flex justify-center ">
@@ -79,7 +89,7 @@ const Register = () => {
                     value: /^(?=.*[a-z])(?=.*[A-Z])/,
                   },
                   minLength: 6,
-                 })}
+                })}
                 type="password"
                 name="password"
                 placeholder="*****"

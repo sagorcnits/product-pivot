@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../components/AuthProvider";
 
 const Navbar = () => {
+  const { user, signOutUser, loaded, setLoaded } = useContext(AuthContext);
+
   return (
     <div className="border-b py-2">
       <div className="navbar max-w-7xl mx-auto">
@@ -50,27 +54,34 @@ const Navbar = () => {
             <NavLink to="/">
               <li>Home</li>
             </NavLink>
-            <NavLink to='/queries'>
+            <NavLink to="/queries">
               <li>Queries</li>
             </NavLink>
-            <NavLink to='/recommendation-for-me'>
+            <NavLink to="/recommendation-for-me">
               <li>Recommendations For Me</li>
             </NavLink>
-            <NavLink to='/myqueries'>
+            <NavLink to="/myqueries">
               <li>My Queries </li>
             </NavLink>
-            <NavLink to='/myrecommend'>
+            <NavLink to="/myrecommend">
               <li>My recommendations</li>
             </NavLink>
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink to="/login">
-            {" "}
-            <button className="button font-Inter text-[16px] font-semibold">
-              Log In
-            </button>
-          </NavLink>
+          {user ? (
+            <NavLink to="/login">
+              <button onClick={signOutUser} className="button font-Inter text-[16px] font-semibold">
+                Log Out
+              </button>
+            </NavLink>
+          ) : (
+            <NavLink to="/login">
+              <button className="button font-Inter text-[16px] font-semibold">
+                Log In
+              </button>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
