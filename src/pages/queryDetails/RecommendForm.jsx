@@ -41,9 +41,9 @@ const RecommendForm = () => {
             />
           </div>
         </div>
-          <button className="w-full button font-Inter font-semibold">
-            Add Recommendation
-          </button>
+        <button className="w-full button font-Inter font-semibold">
+          Add Recommendation
+        </button>
       </form>
     </div>
   );

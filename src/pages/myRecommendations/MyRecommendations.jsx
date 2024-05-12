@@ -1,7 +1,15 @@
+import SectionIntro from "../../components/SectionIntro";
+
 const MyRecommendations = () => {
   return (
     <div>
-      <h1>My Recommendations</h1>
+      <SectionIntro
+        title={{
+          heading: "Your All Recommendations",
+          paragraph:
+            "Recent This Oueries Most Puploer And Really very expensive So you Can Try ",
+        }}
+      ></SectionIntro>
     </div>
   );
 };

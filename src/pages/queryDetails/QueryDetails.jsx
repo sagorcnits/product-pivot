@@ -1,5 +1,5 @@
 import SectionIntro from "../../components/SectionIntro";
-import RecommendForm from "../recommendtionForMe/RecommendForm";
+import RecommendForm from "./RecommendForm";
 
 const imgUrl =
   "https://img.freepik.com/free-photo/online-marketing_53876-95308.jpg?t=st=1715333855~exp=1715337455~hmac=b07b2be266bee1378bab786eddbbe4e8fa7eef51c352252d5fde750f1db2320b&w=740";
