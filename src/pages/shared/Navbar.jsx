@@ -57,6 +57,7 @@ const Navbar = () => {
             <NavLink to="/queries">
               <li>Queries</li>
             </NavLink>
+            { user && <>
             <NavLink to="/recommendation-for-me">
               <li>Recommendations For Me</li>
             </NavLink>
@@ -65,7 +66,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink to="/myrecommend">
               <li>My recommendations</li>
-            </NavLink>
+            </NavLink></>}
           </ul>
         </div>
         <div className="navbar-end">

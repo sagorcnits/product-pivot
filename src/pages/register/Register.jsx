@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../components/AuthProvider";
 const Register = () => {
   const {
@@ -15,9 +17,10 @@ const Register = () => {
   const submit = (data) => {
     createUser(data.email, data.password)
       .then((result) => {
-        setLoaded(!loaded)
+        setLoaded(!loaded);
         const user = result.user;
-        reset()
+        reset();
+        toast.success("Complate Your Register Wow");
       })
       .catch((error) => {
         console.log(error.meassage);
@@ -26,6 +29,7 @@ const Register = () => {
 
   return (
     <div className="w-full flex justify-center ">
+      <ToastContainer></ToastContainer>
       <div className="md:w-[450px] w-full p-6 rounded-md sm:p-10 border">
         <div className="mb-8 text-center">
           <h1 className="text-[30px]  font-Inter font-bold">

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRoute from "../components/PrivateRoute";
 import Root from "../layout/Root";
 import AddQuerie from "../pages/addQuerie/AddQuerie";
 import Home from "../pages/home/Home";
@@ -39,27 +40,27 @@ const router = createBrowserRouter([
 
       { 
         path:"/myqueries",
-        element:<MyQueries></MyQueries>
+        element:<PrivateRoute><MyQueries></MyQueries></PrivateRoute>
       },
 
       { 
         path:"/addquery",
-        element:<AddQuerie></AddQuerie>
+        element:<PrivateRoute><AddQuerie></AddQuerie></PrivateRoute>
       },
 
       { 
         path:"/querydetails",
-        element:<QueryDetails></QueryDetails>
+        element:<PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>
       },
 
       { 
         path:"/myrecommend",
-        element:<MyRecommendations></MyRecommendations>
+        element:<PrivateRoute><MyRecommendations></MyRecommendations></PrivateRoute>
       },
 
       { 
         path:"/recommendation-for-me",
-        element:<RecommendationForMe></RecommendationForMe>
+        element:<PrivateRoute><RecommendationForMe></RecommendationForMe></PrivateRoute>
       },
     ],
   },

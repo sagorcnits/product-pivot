@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../components/AuthProvider";
-
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -19,13 +22,18 @@ const Login = () => {
       .then((result) => {
         setLoaded(!loaded);
         const user = result.user;
-        reset()
+        reset();
+        toast.success("Success Your Login");
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       })
       .catch((error) => console.log(error));
   };
 
   return (
     <div className="w-full flex justify-center ">
+      <ToastContainer></ToastContainer>
       <div className="md:w-[450px] w-full p-6 rounded-md sm:p-10 border">
         <div className="mb-8 text-center">
           <div className="size-24 rounded-full border mx-auto cursor-pointer overflow-hidden">
