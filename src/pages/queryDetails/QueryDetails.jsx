@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SectionIntro from "../../components/SectionIntro";
+import RecommendCard from "./RecommendCard";
 import RecommendForm from "./RecommendForm";
 
 const imgUrl =
@@ -19,6 +20,8 @@ const QueryDetails = () => {
       })
       .catch((error) => console.log(error));
   }, []);
+
+
 
   return (
     <>
@@ -100,7 +103,7 @@ const QueryDetails = () => {
           style={{ backgroundImage: `url(${imgUrl})` }}
           className="rounded-md overflow-hidden     bg-center bg-cover bg-no-repeat   text-center mt-10"
         >
-          <RecommendForm detail={detail}></RecommendForm>
+          <RecommendForm detail={detail} ></RecommendForm>
         </div>
       </section>
       <section>
@@ -111,8 +114,8 @@ const QueryDetails = () => {
               "Recent This Oueries Most Puploer And Really very expensive So you Can Try ",
           }}
         ></SectionIntro>
-        <div>
-          
+        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <RecommendCard id={id} ></RecommendCard>
         </div>
       </section>
     </>

@@ -24,7 +24,7 @@ const queriesData = useLoaderData();
           }}
         ></SectionIntro>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-         {queriesData?.map((querie , id) => <QuerieCard key={id} querie={querie}></QuerieCard>)}
+         {queriesData?.slice(0,6).map((querie , id) => <QuerieCard key={id} querie={querie}></QuerieCard>)}
         </div>
       </section>
       <section>
