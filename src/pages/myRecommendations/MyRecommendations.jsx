@@ -94,7 +94,7 @@ const MyRecommendations = () => {
                         <td>{commended.creatorName}</td>
                         <td>
                           <button
-                            onClick={() => handleDelete(commended._id)}
+                            onClick={() => handleDelete(commended.queryId)}
                             className="button"
                           >
                             delete

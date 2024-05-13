@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../../components/AuthProvider";
 import SectionIntro from "../../components/SectionIntro";
 import RecommendCard from "./RecommendCard";
 import RecommendForm from "./RecommendForm";
@@ -9,6 +10,8 @@ const imgUrl =
   "https://img.freepik.com/free-photo/online-marketing_53876-95308.jpg?t=st=1715333855~exp=1715337455~hmac=b07b2be266bee1378bab786eddbbe4e8fa7eef51c352252d5fde750f1db2320b&w=740";
 const QueryDetails = () => {
   const [detail, setDetails] = useState(null);
+
+const {loaded} = useContext(AuthContext)
   const id = useParams();
   useEffect(() => {
     axios
@@ -19,7 +22,7 @@ const QueryDetails = () => {
         setDetails(detailData);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [loaded]);
 
 
 

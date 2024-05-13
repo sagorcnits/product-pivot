@@ -1,3 +1,4 @@
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -5,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../components/AuthProvider";
+import { auth } from "../../firebase";
 const Login = () => {
   const navigate = useNavigate();
 
@@ -15,8 +17,9 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { user,signInUser, loaded, setLoaded } = useContext(AuthContext);
-    const submit = (data) => {
+  const { user, signInUser, loaded, setLoaded } =
+    useContext(AuthContext);
+  const submit = (data) => {
     signInUser(data.email, data.password)
       .then((result) => {
         setLoaded(!loaded);
@@ -30,16 +33,25 @@ const Login = () => {
       .catch((error) => console.log(error));
   };
 
+  const googleLogIn = () => {
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then((result) => {
+        setLoaded(!loaded);
+        const user = result.user;
+        navigate("/")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="w-full flex justify-center ">
       <ToastContainer></ToastContainer>
       <div className="md:w-[450px] w-full p-6 rounded-md sm:p-10 border">
         <div className="mb-8 text-center">
           <div className="size-24 rounded-full border mx-auto cursor-pointer overflow-hidden">
-            <img
-              src={user?.photoURL}
-              alt=""
-            />
+            <img src={user?.photoURL} alt="" />
           </div>
           <h1 className="text-[25px] font-Inter font-bold">ProductPivot</h1>
         </div>
@@ -83,7 +95,10 @@ const Login = () => {
               </button>
             </div>
             <div className="divider">OR</div>
-            <button className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md hover:bg-gray-200">
+            <button
+              onClick={googleLogIn}
+              className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md hover:bg-gray-200"
+            >
               <FcGoogle></FcGoogle>
               <p>Login with Google</p>
             </button>

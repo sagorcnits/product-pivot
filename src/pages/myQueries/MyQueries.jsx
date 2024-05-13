@@ -39,6 +39,7 @@ const MyQueries = () => {
           .delete(`http://localhost:5000/addquery/${_id}`)
           .then((res) => {
             const data = res.data;
+            console.log(data)
             if (data.deletedCount > 0) {
               setDelete(!isDelete);
               Swal.fire({

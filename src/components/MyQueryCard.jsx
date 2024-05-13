@@ -2,7 +2,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const MyQueryCard = ({ querie, handleDelete, handleUpdate }) => {
+const MyQueryCard = ({ querie, handleDelete,  }) => {
   const {
     _id,
     productName,
