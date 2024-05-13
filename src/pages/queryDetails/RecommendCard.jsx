@@ -38,7 +38,7 @@ const RecommendCard = ({ id }) => {
         return (
           <div
             key={id}
-            className="flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow  md:h-[550px]"
+            className="flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow  md:h-[600px]"
           >
             <div>
               <figure className="rounded-md overflow-hidden h-[200px] flex justify-center items-center bg-gray-400">
