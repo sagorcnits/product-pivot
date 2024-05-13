@@ -103,6 +103,18 @@ const QueryDetails = () => {
           <RecommendForm detail={detail}></RecommendForm>
         </div>
       </section>
+      <section>
+      <SectionIntro
+          title={{
+            heading: "All Recommendations",
+            paragraph:
+              "Recent This Oueries Most Puploer And Really very expensive So you Can Try ",
+          }}
+        ></SectionIntro>
+        <div>
+          
+        </div>
+      </section>
     </>
   );
 };

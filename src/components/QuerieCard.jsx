@@ -8,7 +8,6 @@ const QuerieCard = ({ querie }) => {
     name,
     image,
     date,
-    recommendationCount,
   } = querie;
 
   return (
