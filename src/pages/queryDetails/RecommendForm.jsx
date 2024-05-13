@@ -11,13 +11,13 @@ const RecommendForm = ({ detail }) => {
 
   const submit = (data) => {
     const title = data.title;
-    const productName = data.productName;
+    const itemName = data.productName;
     const imageURl = data.imageURl;
     const recommendation = data.recommendation;
 
     const recommendInfo = {
       title,
-      productName,
+      itemName,
       imageURl,
       recommendation,
       queryId: detail._id,

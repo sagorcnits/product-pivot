@@ -19,10 +19,10 @@ const MyQueryCard = ({ querie, handleDelete, handleUpdate }) => {
   // delete item
 
   return (
-    <div className=" flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 myQuery-card">
-      <div>
-        <figure className="rounded-md overflow-hidden relative">
-          <img src={imageURL} alt="" />
+    <div className=" flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 myQuery-card md:h-[550px]">
+      <div className="md:h-[500px]">
+        <figure className="rounded-md overflow-hidden relative h-[200px]">
+          <img className="w-full h-full" src={imageURL} alt="" />
           <div className="effect-card  duration-500 flex justify-center items-center  gap-6 absolute top-0 right-0 left-0 bottom-0 bg-black opacity-[0.9]">
             <Link to={`/querydetails/${_id}`}>
               <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">

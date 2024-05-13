@@ -16,10 +16,10 @@ const QueriesCard = ({ querie }) => {
 
   
   return (
-    <div className="relative flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 queries-card">
-      <div>
-        <figure className="rounded-md overflow-hidden">
-          <img src={imageURL} alt="" />
+    <div className="relative flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 queries-card md:h-[550px]">
+      <div className="md:h-[500px]">
+        <figure className="rounded-md overflow-hidden h-[200px]">
+          <img className="w-full h-full" src={imageURL} alt="" />
         </figure>
         <h2 className="mb-1 text-xl font-semibold py-2">{title}</h2>
         <div className="flex justify-between ">

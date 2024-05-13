@@ -38,7 +38,7 @@ const RecommendCard = ({ id }) => {
         return (
           <div
             key={id}
-            className="flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 hover:-translate-y-6 hover:border border-bgColor h-[550px]"
+            className="flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow  md:h-[550px]"
           >
             <div>
               <figure className="rounded-md overflow-hidden h-[200px] flex justify-center items-center bg-gray-400">
@@ -46,11 +46,13 @@ const RecommendCard = ({ id }) => {
               </figure>
               <h2 className="mb-1 text-xl font-semibold py-2">{title}</h2>
               <div className="border-b border-gray-500 border-dotted pb-2 font-Inter ">
-              <div className="flex justify-between pb-3">
-              <h1 className="font-semibold">{productName}</h1>
-              <p>{date} ago</p>
-              </div>
-                <h1 className="font-semibold">queryTitle: <span className="text-red-500">{queryTitle}</span></h1>
+                <div className="flex justify-between pb-3">
+                  <h1 className="font-semibold">{productName}</h1>
+                  <p>{date} ago</p>
+                </div>
+                <h1 className="font-semibold">
+                  queryTitle: <span className="text-red-500">{queryTitle}</span>
+                </h1>
                 <p className="text-paragraph-text pt-2">
                   {recommendation.slice(0, 45)}...
                 </p>
@@ -60,10 +62,10 @@ const RecommendCard = ({ id }) => {
                 <p>{userName}</p>
                 <p>{userEmail}</p>
               </div>
-              <p className="text-center py-2 font-bold">User</p>
+              <p className="text-center py-2 font-bold">Creator Query</p>
               <div className="flex justify-between items-center">
-                <p>{userName}</p>
-                <p>{userEmail}</p>
+                <p>{creatorName}</p>
+                <p>{creatorEmail}</p>
               </div>
             </div>
           </div>
