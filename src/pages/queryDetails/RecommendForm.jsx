@@ -12,7 +12,7 @@ const RecommendForm = ({detail}) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+  
   } = useForm();
 
   const submit = (data) => {

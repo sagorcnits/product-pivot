@@ -5,6 +5,7 @@ import AddQuerie from "../pages/addQuerie/AddQuerie";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import MyQueries from "../pages/myQueries/MyQueries";
+import Update from "../pages/myQueries/Update";
 import MyRecommendations from "../pages/myRecommendations/MyRecommendations";
 import NotFound from "../pages/notFound/NotFound";
 import Queries from "../pages/queries/Queries";
@@ -81,6 +82,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <RecommendationForMe></RecommendationForMe>
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <Update></Update>
           </PrivateRoute>
         ),
       },

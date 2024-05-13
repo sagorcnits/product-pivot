@@ -2,7 +2,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const MyQueryCard = ({ querie,handleDelete }) => {
+const MyQueryCard = ({ querie, handleDelete, handleUpdate }) => {
   const {
     _id,
     productName,
@@ -18,7 +18,6 @@ const MyQueryCard = ({ querie,handleDelete }) => {
 
   // delete item
 
-
   return (
     <div className=" flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 myQuery-card">
       <div>
@@ -30,14 +29,17 @@ const MyQueryCard = ({ querie,handleDelete }) => {
                 <IoEyeSharp></IoEyeSharp>
               </span>
             </Link>
+
             <Link to={`/update/${_id}`}>
-              <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
+              <span
+                className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold"
+              >
                 <MdEdit></MdEdit>
               </span>
             </Link>
 
             <span
-              onClick={()=>handleDelete(_id)}
+              onClick={() => handleDelete(_id)}
               className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold"
             >
               <MdDelete></MdDelete>
