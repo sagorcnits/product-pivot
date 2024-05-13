@@ -1,4 +1,65 @@
-const RecommendForm = () => {
+import axios from "axios";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../components/AuthProvider";
+
+const RecommendForm = ({detail}) => {
+  const {user} =useContext(AuthContext);
+ 
+  console.log(user)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const submit = (data) => {
+    const title = data.title;
+    const productName = data.productName;
+    const imageURl = data.imageURl;
+    const recommendation = data.recommendation;
+
+    const recommendInfo = { 
+      title, 
+      productName,
+       imageURl, 
+       recommendation,
+       queryId:detail._id,
+       queryTitle:detail.title,
+       productName:detail.productName,
+       creatorEmail:detail.email,
+       creatorName:detail.name,
+       userEmail:user.email,
+       userName:user.displayName,
+       date:new Date()
+       };
+
+    
+
+    axios
+      .post("http://localhost:5000/recommendation", recommendInfo)
+      .then((res) => {
+        const data = res.data;
+      if(data.insertedId){
+        Swal.fire({
+          title: "Success",
+          text: `Hello ${user.displayName} Sir Your Recommended Added. Thank You Sir`,
+          icon:"success"
+        });
+        reset()
+      }
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Wrong",
+          text: `${error.message}`,
+          icon:"error"
+        });
+      });
+  };
+
   return (
     <div className="md:w-[470px] w-full p-2 md:p-6  border bg-white">
       <div className="mb-4 text-center">
@@ -6,10 +67,11 @@ const RecommendForm = () => {
           Add Recommendation
         </h1>
       </div>
-      <form className="space-y-8 font-Inter ">
+      <form className="space-y-8 font-Inter" onSubmit={handleSubmit(submit)}>
         <div className="space-y-4">
           <div>
             <input
+              {...register("title",{required:true})}
               type="text"
               name="title"
               placeholder="Product title"
@@ -18,22 +80,25 @@ const RecommendForm = () => {
           </div>
           <div>
             <input
+              {...register("productName",{required:true})}
               type="text"
-              name="Product Name"
+              name="productName"
               placeholder="Product Name"
               className="w-full px-3 py-2 border rounded-md "
             />
           </div>
           <div>
             <input
+              {...register("imageURl",{required:true})}
               type="text"
-              name="image-url"
+              name="imageURl"
               placeholder="Product Image-URL"
               className="w-full px-3 py-2 border rounded-md "
             />
           </div>
           <div>
             <textarea
+              {...register("recommendation",{required:true})}
               type="text"
               name="recommendation"
               placeholder="Recommendation reason"

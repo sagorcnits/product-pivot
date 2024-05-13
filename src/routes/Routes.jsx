@@ -41,14 +41,12 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/myqueries/:id",
+        path: "/myqueries",
         element: (
           <PrivateRoute>
             <MyQueries></MyQueries>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/addquery/${params.id}`),
       },
 
       {

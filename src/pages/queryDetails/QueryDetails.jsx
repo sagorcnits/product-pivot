@@ -18,9 +18,7 @@ const QueryDetails = () => {
         setDetails(detailData);
       })
       .catch((error) => console.log(error));
-  }, [detail]);
-
-
+  }, []);
 
   return (
     <>
@@ -34,7 +32,11 @@ const QueryDetails = () => {
       </div>
       <div className="mt-16 flex flex-col md:flex-row items-center gap-10 ">
         <figure className="rounded-md overflow-hidden flex-1 md:h-[500px]">
-          <img className="w-full h-full cursor-pointer duration-500 scale-1 hover:scale-[1.1]" src={detail?.imageURL} alt="" />
+          <img
+            className="w-full h-full cursor-pointer duration-500 scale-1 hover:scale-[1.1]"
+            src={detail?.imageURL}
+            alt=""
+          />
         </figure>
         <div className="font-Inter flex-1">
           <div className="border-b border-dotted">
@@ -49,7 +51,6 @@ const QueryDetails = () => {
               <span className="font-bold">Brand Name:</span>{" "}
               {detail?.producBrand}
             </h1>
-            
           </div>
           <div className="border-b border-dotted">
             <h1 className="py-3 text-[18px] text-balance">
@@ -99,7 +100,7 @@ const QueryDetails = () => {
           style={{ backgroundImage: `url(${imgUrl})` }}
           className="rounded-md overflow-hidden     bg-center bg-cover bg-no-repeat   text-center mt-10"
         >
-          <RecommendForm></RecommendForm>
+          <RecommendForm detail={detail}></RecommendForm>
         </div>
       </section>
     </>

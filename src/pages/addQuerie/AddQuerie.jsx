@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../components/AuthProvider";
 const AddQuerie = () => {
   const { user } = useContext(AuthContext);
-
   const handleSubmit = (data) => {
     data.preventDefault();
 
@@ -34,8 +33,8 @@ const AddQuerie = () => {
         const data = res.data;
         if (data.insertedId) {
           Swal.fire({
-            title: "Succes",
-            text: `${productName} Added`,
+            title: "Success",
+            text: `Hello ${user.displayName} Sir Your Query Added`,
             imageUrl: `${imageURL}`,
             imageWidth: 400,
             imageHeight: 200,

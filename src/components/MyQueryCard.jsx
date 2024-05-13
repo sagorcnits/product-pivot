@@ -2,7 +2,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const MyQueryCard = ({querie}) => {
+const MyQueryCard = ({ querie,handleDelete }) => {
   const {
     _id,
     productName,
@@ -16,28 +16,35 @@ const MyQueryCard = ({querie}) => {
     recommendationCount,
   } = querie;
 
+  // delete item
+
+
   return (
     <div className=" flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 myQuery-card">
       <div>
         <figure className="rounded-md overflow-hidden relative">
           <img src={imageURL} alt="" />
           <div className="effect-card  duration-500 flex justify-center items-center  gap-6 absolute top-0 right-0 left-0 bottom-0 bg-black opacity-[0.9]">
-          <Link to={`/querydetails/${_id}`}>
-          <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
-             <IoEyeSharp></IoEyeSharp>
-            </span>
-          </Link>
-            <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
-              <MdEdit></MdEdit>
-            </span>
-            <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
+            <Link to={`/querydetails/${_id}`}>
+              <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
+                <IoEyeSharp></IoEyeSharp>
+              </span>
+            </Link>
+            <Link to={`/update/${_id}`}>
+              <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
+                <MdEdit></MdEdit>
+              </span>
+            </Link>
+
+            <span
+              onClick={()=>handleDelete(_id)}
+              className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold"
+            >
               <MdDelete></MdDelete>
             </span>
           </div>
         </figure>
-        <h2 className="mb-1 text-xl font-semibold py-2">
-          {title}
-        </h2>
+        <h2 className="mb-1 text-xl font-semibold py-2">{title}</h2>
         <div className="flex justify-between ">
           <h1>
             <span className="font-bold">Product Name:</span> {productName}
@@ -46,9 +53,7 @@ const MyQueryCard = ({querie}) => {
             <span className="font-bold">Brand Name:</span> {producBrand}
           </h1>
         </div>
-        <p className="text-paragraph-text pt-2">
-        {boycotting}
-        </p>
+        <p className="text-paragraph-text pt-2">{boycotting}</p>
       </div>
       <div className="flex flex-wrap justify-between ">
         <div className="flex space-x-4 ">

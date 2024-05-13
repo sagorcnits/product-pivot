@@ -61,7 +61,7 @@ const Navbar = () => {
             <NavLink to="/recommendation-for-me">
               <li>Recommendations For Me</li>
             </NavLink>
-            <NavLink to={`/myqueries/${user.email}`}>
+            <NavLink to='/myqueries'>
               <li>My Queries </li>
             </NavLink>
             <NavLink to="/myrecommend">
