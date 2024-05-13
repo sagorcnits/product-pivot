@@ -1,9 +1,27 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import SectionIntro from "../../components/SectionIntro";
 import RecommendForm from "./RecommendForm";
 
 const imgUrl =
   "https://img.freepik.com/free-photo/online-marketing_53876-95308.jpg?t=st=1715333855~exp=1715337455~hmac=b07b2be266bee1378bab786eddbbe4e8fa7eef51c352252d5fde750f1db2320b&w=740";
 const QueryDetails = () => {
+  const [detail, setDetails] = useState(null);
+  const id = useParams();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/addquery")
+      .then((res) => {
+        const data = res.data;
+        const detailData = data.find((detail) => detail._id === id.id);
+        setDetails(detailData);
+      })
+      .catch((error) => console.log(error));
+  }, [detail]);
+
+
+
   return (
     <>
       <div
@@ -14,41 +32,43 @@ const QueryDetails = () => {
           Details Queries
         </h1>
       </div>
-      <div className="mt-10 flex flex-col md:flex-row gap-10">
-        <figure className="rounded-md overflow-hidden flex-1">
-          <img className="w-full h-full" src={imgUrl} alt="" />
+      <div className="mt-16 flex flex-col md:flex-row items-center gap-10 ">
+        <figure className="rounded-md overflow-hidden flex-1 md:h-[500px]">
+          <img className="w-full h-full cursor-pointer duration-500 scale-1 hover:scale-[1.1]" src={detail?.imageURL} alt="" />
         </figure>
         <div className="font-Inter flex-1">
           <div className="border-b border-dotted">
-            <h2 className="mb-1 text-xl font-semibold py-2 text-balance">
-              Is there any Better product that gives me the same quality?
+            <h2 className="mb-1 text-xl font-semibold pb-2 pt-0 text-balance">
+              {detail?.title}
             </h2>
             <h1 className="py-3 text-[18px] ">
-              <span className="font-bold">Product Name:</span> Watch
+              <span className="font-bold">Product Name:</span>{" "}
+              {detail?.productName}
             </h1>
             <h1 className="py-3 text-[18px] ">
-              <span className="font-bold">Brand Name:</span> Samsung
+              <span className="font-bold">Brand Name:</span>{" "}
+              {detail?.producBrand}
             </h1>
+            
           </div>
           <div className="border-b border-dotted">
             <h1 className="py-3 text-[18px] text-balance">
-              <span className="font-bold">Alternation Reason:</span> Lorem,
-              ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-              exercitationem repellendus veritatis aliquam odio rem debitis a
-              iure
+              <span className="font-bold">Alternation Reason:</span>{" "}
+              {detail?.boycotting}
             </h1>
             <h1 className="py-3 text-[18px] ">
-              <span className="font-bold">Posted:</span> 1hr ago
+              <span className="font-bold">Posted:</span> {detail?.date} ago
             </h1>
             <h1 className="py-3 text-[18px] ">
-              <span className="font-bold">RecommendationCount:</span> 44
+              <span className="font-bold">RecommendationCount:</span>{" "}
+              {detail?.recommendationCount}
             </h1>
           </div>
           <div className="flex flex-wrap justify-between">
             <div className="flex space-x-4 mt-4">
               <img
                 alt=""
-                src="https://source.unsplash.com/100x100/?portrait"
+                src={detail?.image}
                 className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
               />
               <div className="flex flex-col space-y-1">
@@ -57,9 +77,11 @@ const QueryDetails = () => {
                   href="#"
                   className="text-sm font-semibold"
                 >
-                  Leroy Jenkins
+                  {detail?.name}
                 </a>
-                <span className="text-xs dark:text-gray-600">4 hours ago</span>
+                <span className="text-xs dark:text-gray-600">
+                  {detail?.date} ago
+                </span>
               </div>
             </div>
           </div>

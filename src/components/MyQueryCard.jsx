@@ -1,9 +1,10 @@
 import { IoEyeSharp } from "react-icons/io5";
 import { MdDelete, MdEdit } from "react-icons/md";
-const imgUrl =
-  "https://img.freepik.com/free-photo/online-marketing_53876-95308.jpg?t=st=1715333855~exp=1715337455~hmac=b07b2be266bee1378bab786eddbbe4e8fa7eef51c352252d5fde750f1db2320b&w=740";
+import { Link } from "react-router-dom";
+
 const MyQueryCard = ({querie}) => {
   const {
+    _id,
     productName,
     producBrand,
     imageURL,
@@ -20,10 +21,12 @@ const MyQueryCard = ({querie}) => {
       <div>
         <figure className="rounded-md overflow-hidden relative">
           <img src={imageURL} alt="" />
-          <div className="effect-card scale-0 duration-500 flex justify-center items-center  gap-6 absolute top-0 right-0 left-0 bottom-0 bg-black opacity-[0.9]">
-            <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
+          <div className="effect-card  duration-500 flex justify-center items-center  gap-6 absolute top-0 right-0 left-0 bottom-0 bg-black opacity-[0.9]">
+          <Link to={`/querydetails/${_id}`}>
+          <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
              <IoEyeSharp></IoEyeSharp>
             </span>
+          </Link>
             <span className="size-14 rounded-full bg-bgColor flex justify-center items-center hover:bg-orange-500 duration-500 hover:text-white text-[20px] font-Inter font-bold">
               <MdEdit></MdEdit>
             </span>
@@ -52,7 +55,7 @@ const MyQueryCard = ({querie}) => {
           <img
             alt=""
             src={image}
-            className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
+            className="object-cover w-12 h-12 rounded-full shadow "
           />
           <div className="flex flex-col space-y-1">
             <a

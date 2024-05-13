@@ -31,6 +31,12 @@
     bottom: -260px;
   }
 
+  .effect-card {
+    inset: 0;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+  }
+
   .myQuery-card:hover .effect-card {
     transform: scale(1);
   }

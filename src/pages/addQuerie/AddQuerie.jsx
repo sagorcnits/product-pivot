@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../components/AuthProvider";
-
 const AddQuerie = () => {
   const { user } = useContext(AuthContext);
 
@@ -27,14 +27,29 @@ const AddQuerie = () => {
       recommendationCount: 0,
     };
 
-// data post server 
-    axios.post("http://localhost:5000/addquery", productInfo)
-    .then(res => {
-      console.log(res.data)
-    }).catch(error => {
-      console.log(error)
-    })
-   
+    // data post server
+    axios
+      .post("http://localhost:5000/addquery", productInfo)
+      .then((res) => {
+        const data = res.data;
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Succes",
+            text: `${productName} Added`,
+            imageUrl: `${imageURL}`,
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: "Custom image",
+          });
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          text: `${error.message}`,
+          icon: "error",
+        });
+      });
   };
 
   // console.log(user);

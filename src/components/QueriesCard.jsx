@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 const QueriesCard = ({ querie }) => {
   const {
+    _id,
     productName,
     producBrand,
     imageURL,
@@ -12,6 +13,8 @@ const QueriesCard = ({ querie }) => {
     date,
     recommendationCount,
   } = querie;
+
+  
   return (
     <div className="relative flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 queries-card">
       <div>
@@ -62,7 +65,7 @@ const QueriesCard = ({ querie }) => {
       </div>
 
       <div className="absolute queries-button duration-500 -bottom-[350px] size-[350px] overflow-hidden rounded-full bg-black  text-center ">
-        <Link to="/querydetails">
+        <Link to={`/querydetails/${_id}`}>
           <button className="button mt-8">Recommend</button>
         </Link>
       </div>

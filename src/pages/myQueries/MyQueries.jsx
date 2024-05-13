@@ -7,7 +7,7 @@ const imgUrl =
 
 const MyQueries = () => {
   const myQueriesData = useLoaderData();
-// console.log(myQueriesData)
+  // console.log(myQueriesData)
   return (
     <div>
       <div
@@ -29,11 +29,25 @@ const MyQueries = () => {
               "Recent This Oueries Most Puploer And Really very expensive So you Can Try ",
           }}
         ></SectionIntro>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-          {myQueriesData?.map((querie, id) => (
-            <MyQueryCard key={id} querie={querie}></MyQueryCard>
-          ))}
-        </div>
+        {myQueriesData.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
+            {myQueriesData?.map((querie, id) => (
+              <MyQueryCard key={id} querie={querie}></MyQueryCard>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center">
+            <figure className="w-[30%] mx-auto ">
+              <img className="w-full"
+                src="https://img.freepik.com/free-vector/flat-design-no-data-illustration_23-2150527139.jpg?t=st=1715558236~exp=1715561836~hmac=0c5c11e6b082de262ae40e6cffa389f27c683ec7c3539bbe48970612af104f58&w=740"
+                alt=""
+              />
+            </figure>
+            <Link to="/addquery">
+              <button className="button">Add Ouery</button>
+            </Link>
+          </div>
+        )}
       </section>
     </div>
   );

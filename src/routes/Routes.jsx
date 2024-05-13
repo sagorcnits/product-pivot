@@ -21,49 +21,70 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/addquery")
+        loader: () => fetch("http://localhost:5000/addquery"),
       },
 
       {
-        path:"/login",
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
 
       {
-        path:"/register",
-        element:<Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
 
       {
-        path:"/queries",
-        element:<Queries></Queries>,
-        loader: () => fetch("http://localhost:5000/addquery")
+        path: "/queries",
+        element: <Queries></Queries>,
+        loader: () => fetch("http://localhost:5000/addquery"),
       },
 
-      { 
-        path:"/myqueries/:id",
-        element:<PrivateRoute><MyQueries></MyQueries></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/addquery/${params.id}`)
+      {
+        path: "/myqueries/:id",
+        element: (
+          <PrivateRoute>
+            <MyQueries></MyQueries>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/addquery/${params.id}`),
       },
 
-      { 
-        path:"/addquery",
-        element:<PrivateRoute><AddQuerie></AddQuerie></PrivateRoute>
+      {
+        path: "/addquery",
+        element: (
+          <PrivateRoute>
+            <AddQuerie></AddQuerie>
+          </PrivateRoute>
+        ),
       },
 
-      { 
-        path:"/querydetails",
-        element:<PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>
+      {
+        path: "/querydetails/:id",
+        element: (
+          <PrivateRoute>
+            <QueryDetails></QueryDetails>
+          </PrivateRoute>
+        ),
       },
 
-      { 
-        path:"/myrecommend",
-        element:<PrivateRoute><MyRecommendations></MyRecommendations></PrivateRoute>
+      {
+        path: "/myrecommend",
+        element: (
+          <PrivateRoute>
+            <MyRecommendations></MyRecommendations>
+          </PrivateRoute>
+        ),
       },
 
-      { 
-        path:"/recommendation-for-me",
-        element:<PrivateRoute><RecommendationForMe></RecommendationForMe></PrivateRoute>
+      {
+        path: "/recommendation-for-me",
+        element: (
+          <PrivateRoute>
+            <RecommendationForMe></RecommendationForMe>
+          </PrivateRoute>
+        ),
       },
     ],
   },
