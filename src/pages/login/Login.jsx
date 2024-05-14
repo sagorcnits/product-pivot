@@ -40,7 +40,10 @@ const Login = () => {
           navigate("/");
         }, 2000);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.warn("Sorry Your Email or Password Invalid");
+        console.log(error)
+      });
   };
 
   const googleLogIn = () => {
@@ -48,6 +51,15 @@ const Login = () => {
       .then((result) => {
         setLoaded(!loaded);
         const user = result.user;
+        axios
+        .post("https://product-pivot-server.vercel.app/jwt", user, { withCredentials: true })
+        .then((res) => {
+          const data = res.data;
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
         navigate("/");
       })
       .catch((error) => {

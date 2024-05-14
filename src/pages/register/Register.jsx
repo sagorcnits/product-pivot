@@ -1,12 +1,14 @@
+import axios from "axios";
 import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../components/AuthProvider";
 import { auth } from "../../firebase";
 const Register = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -25,11 +27,23 @@ const Register = () => {
           displayName: data.name,
           photoURL: data.photo_url,
         });
+      //  server hitting jwt
+      axios
+      .post("https://product-pivot-server.vercel.app/jwt", user, { withCredentials: true })
+      .then((res) => {
+        const data = res.data;
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+        navigate("/")
         reset();
         toast.success("Complate Your Register Wow");
       })
       .catch((error) => {
-        console.log(error.meassage);
+        toast.warn("Alredy Use This Email");
+        console.log(error.message)
       });
   };
 
