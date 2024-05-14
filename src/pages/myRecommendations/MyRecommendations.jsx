@@ -64,7 +64,7 @@ const MyRecommendations = () => {
         title={{
           heading: "Your All Recommendations",
           paragraph:
-            "Recent This Oueries Most Puploer And Really very expensive So you Can Try ",
+            "Your Recommendations here if you want to delete just delete button clik",
         }}
       ></SectionIntro>
 

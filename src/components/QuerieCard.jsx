@@ -42,7 +42,7 @@ const QuerieCard = ({ querie }) => {
             >
               {name}
             </a>
-            <span className="text-xs dark:text-gray-600">{date} ago</span>
+            <span className="text-xs dark:text-gray-600">{date} minute ago</span>
           </div>
         </div>
       </div>

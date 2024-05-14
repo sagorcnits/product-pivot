@@ -47,7 +47,7 @@ const QueriesCard = ({ querie }) => {
             >
               {name}
             </a>
-            <span className="text-xs dark:text-gray-600">{date} ago</span>
+            <span className="text-xs dark:text-gray-600">{date} minute ago</span>
           </div>
         </div>
         <button type="button" className="flex items-center p-1 space-x-1.5">

@@ -19,7 +19,14 @@ const MyQueries = () => {
       .get(`https://product-pivot-server.vercel.app/addquery/${user.email}`,  {withCredentials:true})
       .then((res) => {
         const data = res.data;
-        setUserData(data);
+        const sortArr = data.sort((a, b) => {
+          const timeA = a.date.replaceAll(" ", "");
+          const mainTimeA = timeA.replaceAll(":", "");
+          const timeB = b.date.replaceAll(" ", "");
+          const mainTimeB = timeB.replaceAll(":", "");
+          return mainTimeB - mainTimeA;
+        });
+        setUserData(sortArr);
       })
       .catch((error) => console.log(error.message));
   }, [isDelete]);
@@ -36,10 +43,10 @@ const MyQueries = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://product-pivot-server.vercel.app/addquery/${_id}`)
+          .delete(`https://product-pivot-server.vercel.app/addquery/${_id}`, {withCredentials:true})
           .then((res) => {
             const data = res.data;
-            console.log(data)
+            // console.log(data)
             if (data.deletedCount > 0) {
               setDelete(!isDelete);
               Swal.fire({
@@ -55,6 +62,8 @@ const MyQueries = () => {
       }
     });
   };
+
+  
 
   return (
     <div>
@@ -72,9 +81,9 @@ const MyQueries = () => {
       <section>
         <SectionIntro
           title={{
-            heading: "My Query Section",
+            heading: "Your All Query",
             paragraph:
-              "Recent This Oueries Most Puploer And Really very expensive So you Can Try ",
+              "",
           }}
         ></SectionIntro>
         {userData.length > 0 ? (

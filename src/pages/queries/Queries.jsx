@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import QueriesCard from "../../components/QueriesCard";
@@ -6,9 +6,10 @@ const imgUrl =
   "https://img.freepik.com/free-photo/online-marketing_53876-95308.jpg?t=st=1715333855~exp=1715337455~hmac=b07b2be266bee1378bab786eddbbe4e8fa7eef51c352252d5fde750f1db2320b&w=740";
 const Queries = () => {
   const queriesData = useLoaderData();
-  const [allQuery, setAllQuery] = useState(queriesData);
+  const [allQuery, setAllQuery] = useState([]);
   const [inputValue, setInputValue] = useState(null);
-const [layout,setLayout] = useState(3)
+  const [layout, setLayout] = useState(3);
+
   const handleSearch = () => {
     const filterData = queriesData.filter((item) => {
       const itemName = item.productName.toLowerCase();
@@ -20,10 +21,23 @@ const [layout,setLayout] = useState(3)
     });
     setAllQuery(filterData);
   };
-  // layout changes 
+  // layout changes
   const layoutChanges = (data) => {
-    setLayout(data)
-  }
+    setLayout(data);
+  };
+
+  useEffect(() => {
+    const sortArr = queriesData.sort((a, b) => {
+      const timeA = a.date.replaceAll(" ", "");
+      const mainTimeA = timeA.replaceAll(":", "");
+      const timeB = b.date.replaceAll(" ", "");
+      const mainTimeB = timeB.replaceAll(":", "");
+      return mainTimeB - mainTimeA;
+    });
+    setAllQuery(sortArr);
+  }, []);
+  // console.log(sortArr);
+
   return (
     <div>
       <div
@@ -49,13 +63,23 @@ const [layout,setLayout] = useState(3)
       <div className="mt-10 hidden lg:block">
         <h1 className="py-2 font-Inter font-bold text-[20px]">Select Layout</h1>
         <div className="flex gap-4">
-          <button onClick={()=> layoutChanges(2)} className="button">2</button>
-          <button onClick={()=> layoutChanges(3)} className="button">3</button>
-          <button onClick={()=> layoutChanges(4)} className="button ">4</button>
+          <button onClick={() => layoutChanges(2)} className="button">
+            2
+          </button>
+          <button onClick={() => layoutChanges(3)} className="button">
+            3
+          </button>
+          <button onClick={() => layoutChanges(4)} className="button ">
+            4
+          </button>
         </div>
       </div>
 
-      <div className={`grid md:grid-cols-2 lg:grid-cols-${layout} ${layout == 4 ? "gap-2" :"gap-10 " } ${layout==4 ? "mt-10" : "mt-10"}`}>
+      <div
+        className={`grid md:grid-cols-2 lg:grid-cols-${layout} ${
+          layout == 4 ? "gap-2" : "gap-10 "
+        } ${layout == 4 ? "mt-10" : "mt-10"}`}
+      >
         {allQuery?.map((querie, id) => (
           <QueriesCard querie={querie} key={id}></QueriesCard>
         ))}

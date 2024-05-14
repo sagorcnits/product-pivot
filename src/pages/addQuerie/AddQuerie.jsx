@@ -1,12 +1,14 @@
 import axios from "axios";
+import date from 'date-and-time';
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../components/AuthProvider";
+
 const AddQuerie = () => {
   const { user } = useContext(AuthContext);
   const handleSubmit = (data) => {
     data.preventDefault();
-
+    const now = new Date();
     const form = data.target;
     const productName = form.name.value;
     const producBrand = form.brand.value;
@@ -22,7 +24,7 @@ const AddQuerie = () => {
       name: user.displayName,
       email: user.email,
       image: user.photoURL,
-      date: new Date(),
+      date: date.format(now, 'MM DD YYYY HH:mm'),
       recommendationCount: 0,
     };
 
