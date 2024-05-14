@@ -11,7 +11,7 @@ const MyRecommendations = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/recommendation")
+      .get("https://product-pivot-server.vercel.app/recommendation", {withCredentials:true})
       .then((res) => {
         const data = res.data;
         const myCommendsData = data.filter(
@@ -38,7 +38,7 @@ const MyRecommendations = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/recommendation/${id}`)
+          .delete(`https://product-pivot-server.vercel.app/recommendation/${id}`)
           .then((res) => {
             const data = res.data;
             if (data.deletedCount > 0) {

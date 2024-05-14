@@ -15,7 +15,7 @@ const {loaded} = useContext(AuthContext)
   const id = useParams();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/addquery")
+      .get("https://product-pivot-server.vercel.app/addquery")
       .then((res) => {
         const data = res.data;
         const detailData = data.find((detail) => detail._id === id.id);

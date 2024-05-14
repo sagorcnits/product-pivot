@@ -28,7 +28,7 @@ const AddQuerie = () => {
 
     // data post server
     axios
-      .post("http://localhost:5000/addquery", productInfo)
+      .post("https://product-pivot-server.vercel.app/addquery", productInfo)
       .then((res) => {
         const data = res.data;
         if (data.insertedId) {

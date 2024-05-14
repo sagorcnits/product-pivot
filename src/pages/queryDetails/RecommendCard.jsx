@@ -7,7 +7,7 @@ const RecommendCard = ({ id }) => {
   const { loaded } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/recommendation/${id.id}`)
+      .get(`https://product-pivot-server.vercel.app/recommendation/${id.id}`)
       .then((res) => {
         const data = res.data;
         console.log(data);

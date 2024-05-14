@@ -31,7 +31,7 @@ const RecommendForm = ({ detail }) => {
     };
 
     axios
-      .post("http://localhost:5000/recommendation", recommendInfo)
+      .post("https://product-pivot-server.vercel.app/recommendation", recommendInfo)
       .then((res) => {
         const data = res.data;
         setLoaded(!loaded)

@@ -16,7 +16,7 @@ const MyQueries = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/addquery/${user.email}`)
+      .get(`https://product-pivot-server.vercel.app/addquery/${user.email}`,  {withCredentials:true})
       .then((res) => {
         const data = res.data;
         setUserData(data);
@@ -36,7 +36,7 @@ const MyQueries = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/addquery/${_id}`)
+          .delete(`https://product-pivot-server.vercel.app/addquery/${_id}`)
           .then((res) => {
             const data = res.data;
             console.log(data)

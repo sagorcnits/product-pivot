@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/addquery"),
+        loader: () => fetch("https://product-pivot-server.vercel.app/addquery"),
       },
 
       {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/queries",
         element: <Queries></Queries>,
-        loader: () => fetch("http://localhost:5000/addquery"),
+        loader: () => fetch("https://product-pivot-server.vercel.app/addquery"),
       },
 
       {

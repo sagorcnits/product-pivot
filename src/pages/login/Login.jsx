@@ -25,7 +25,7 @@ const Login = () => {
         setLoaded(!loaded);
         const user = result.user;
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("https://product-pivot-server.vercel.app/jwt", user, { withCredentials: true })
           .then((res) => {
             const data = res.data;
             console.log(data);

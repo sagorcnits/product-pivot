@@ -9,7 +9,7 @@ const RecommendationForMe = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/recommendation")
+      .get("https://product-pivot-server.vercel.app/recommendation", {withCredentials:true})
       .then((res) => {
         const data = res.data;
         const filterForMe = data.filter(

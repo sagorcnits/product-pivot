@@ -9,7 +9,7 @@ const Update = () => {
   const [update, setUpdate] = useState({});
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    axios.get("http://localhost:5000/addquery").then((res) => {
+    axios.get("https://product-pivot-server.vercel.app/addquery").then((res) => {
       const data = res.data;
       const updateItem = data.find((item) => item._id === id);
       setUpdate(updateItem);
@@ -34,7 +34,7 @@ const Update = () => {
     };
     // console.log(updateData);
     axios
-      .put(`http://localhost:5000/addquery/${id}`, updateData)
+      .put(`https://product-pivot-server.vercel.app/addquery/${id}`, updateData)
       .then((res) => {
         const data = res.data;
         console.log(data);
