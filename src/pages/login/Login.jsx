@@ -1,3 +1,4 @@
+import axios from "axios";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
@@ -17,13 +18,22 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { user, signInUser, loaded, setLoaded } =
-    useContext(AuthContext);
+  const { user, signInUser, loaded, setLoaded } = useContext(AuthContext);
   const submit = (data) => {
     signInUser(data.email, data.password)
       .then((result) => {
         setLoaded(!loaded);
         const user = result.user;
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            const data = res.data;
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+
         reset();
         toast.success("Success Your Login");
         setTimeout(() => {
@@ -38,7 +48,7 @@ const Login = () => {
       .then((result) => {
         setLoaded(!loaded);
         const user = result.user;
-        navigate("/")
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

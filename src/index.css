@@ -28,7 +28,11 @@
 
   .queries-card:hover .queries-button {
     position: absolute;
-    bottom: -260px;
+    bottom: 0;
+  }
+
+  .queries-button {
+    clip-path: polygon(16% 0, 83% 0, 100% 100%, 0% 100%);
   }
 
   .effect-card {
