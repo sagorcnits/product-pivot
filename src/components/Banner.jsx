@@ -35,7 +35,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className="rounded-md overflow-hidden  md:h-[550px] h-[300px] bg-[url('https://img.freepik.com/free-vector/juice-glass-bottles-set_1284-18965.jpg?t=st=1715674373~exp=1715677973~hmac=6331f54bc0f5533776d611f4150b01f6998c9d482d467de944c6e37a2133286c&w=740')] bg-center bg-cover bg-no-repeat bg-blend-multiply bg-[#8ba0b1] flex justify-center items-center">
           <div className="md:w-1/2 mx-auto text-center  text-white flex flex-col gap-4">
-            <h1 className="text-[40px] poppins-bold">juice Naural Food</h1>
+            <h1 className="text-[40px] poppins-bold">juice Glass</h1>
             <p className="poppins-reguler">
               Go product juice to keep the water
             </p>

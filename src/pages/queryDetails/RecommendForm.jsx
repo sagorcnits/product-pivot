@@ -1,9 +1,9 @@
 import axios from "axios";
+import date from 'date-and-time';
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../components/AuthProvider";
-
 const RecommendForm = ({ detail }) => {
   const { user,setLoaded, loaded } = useContext(AuthContext);
 
@@ -14,7 +14,7 @@ const RecommendForm = ({ detail }) => {
     const itemName = data.productName;
     const imageURl = data.imageURl;
     const recommendation = data.recommendation;
-
+    const now = new Date();
     const recommendInfo = {
       title,
       itemName,
@@ -27,7 +27,7 @@ const RecommendForm = ({ detail }) => {
       creatorName: detail.name,
       userEmail: user.email,
       userName: user.displayName,
-      date: new Date(),
+      date: date.format(now, 'MM DD YYYY HH:mm'),
     };
 
     axios

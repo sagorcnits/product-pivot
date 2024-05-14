@@ -11,7 +11,7 @@ const imgUrl =
 const QueryDetails = () => {
   const [detail, setDetails] = useState(null);
 
-const {loaded} = useContext(AuthContext)
+  const { loaded } = useContext(AuthContext);
   const id = useParams();
   useEffect(() => {
     axios
@@ -24,8 +24,6 @@ const {loaded} = useContext(AuthContext)
       .catch((error) => console.log(error));
   }, [loaded]);
 
-
-
   return (
     <>
       <div
@@ -36,7 +34,7 @@ const {loaded} = useContext(AuthContext)
           Details Queries
         </h1>
       </div>
-      <div className="mt-16 flex flex-col md:flex-row items-center gap-10 ">
+      <div className="mt-16 flex flex-col md:flex-row  gap-10 ">
         <figure className="rounded-md overflow-hidden flex-1 md:h-[500px]">
           <img
             className="w-full h-full cursor-pointer duration-500 scale-1 hover:scale-[1.1]"
@@ -60,7 +58,9 @@ const {loaded} = useContext(AuthContext)
           </div>
           <div className="border-b border-dotted">
             <h1 className="py-3 text-[18px] text-balance">
-              <span className="font-bold">Alternation Reason:</span>{" "}
+              <span className="font-bold">
+                Alternation Reason: <br />
+              </span>{" "}
               {detail?.boycotting}
             </h1>
             <h1 className="py-3 text-[18px] ">
@@ -71,26 +71,28 @@ const {loaded} = useContext(AuthContext)
               {detail?.recommendationCount}
             </h1>
           </div>
-          <div className="flex flex-wrap justify-between">
-            <div className="flex space-x-4 mt-4">
-              <img
-                alt=""
-                src={detail?.image}
-                className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
-              />
-              <div className="flex flex-col space-y-1">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="text-sm font-semibold"
-                >
-                  {detail?.name}
-                </a>
-                <span className="text-xs dark:text-gray-600">
-                  {detail?.date} ago
-                </span>
-              </div>
+
+          <div className="flex space-x-4 mt-4">
+            <img
+              alt=""
+              src={detail?.image}
+              className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
+            />
+            <div className="flex flex-col space-y-1">
+              <a
+                rel="noopener noreferrer"
+                href="#"
+                className="text-sm font-semibold"
+              >
+                {detail?.name}
+              </a>
+              <span className="text-xs dark:text-gray-600">
+                {detail?.date} ago
+              </span>
             </div>
+          </div>
+          <div className="pt-4">
+            <span className="font-bold">Creator Email:</span> {detail?.email}
           </div>
         </div>
       </div>
@@ -106,11 +108,11 @@ const {loaded} = useContext(AuthContext)
           style={{ backgroundImage: `url(${imgUrl})` }}
           className="rounded-md overflow-hidden     bg-center bg-cover bg-no-repeat   text-center mt-10"
         >
-          <RecommendForm detail={detail} ></RecommendForm>
+          <RecommendForm detail={detail}></RecommendForm>
         </div>
       </section>
       <section>
-      <SectionIntro
+        <SectionIntro
           title={{
             heading: "All Recommendations",
             paragraph:
@@ -118,7 +120,7 @@ const {loaded} = useContext(AuthContext)
           }}
         ></SectionIntro>
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <RecommendCard id={id} ></RecommendCard>
+          <RecommendCard id={id}></RecommendCard>
         </div>
       </section>
     </>

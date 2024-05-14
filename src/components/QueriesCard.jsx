@@ -22,12 +22,12 @@ const QueriesCard = ({ querie }) => {
           <img className="w-full h-full" src={imageURL} alt="" />
         </figure>
         <h2 className="mb-1 text-xl font-semibold py-2">{title}</h2>
-        <div className="flex justify-between ">
+        <div className="flex flex-col gap-2">
           <h1>
-            <span className="font-bold">Product Name:</span> {productName}
+            <span className="font-bold">Product Name:</span><span className="text-red-500"> {productName}</span>
           </h1>
           <h1>
-            <span className="font-bold">Brand Name:</span> {producBrand}
+            <span className="font-bold">Brand Name:</span><span className="text-red-500"> {producBrand}</span>
           </h1>
         </div>
         <p className="text-paragraph-text pt-2">{boycotting}</p>
