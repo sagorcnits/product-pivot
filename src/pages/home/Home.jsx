@@ -49,7 +49,7 @@ const queriesData = useLoaderData();
           title={{
             heading: "Upcomming Featured",
             paragraph:
-              "Get the right product information to the right places at the right time ",
+              "These will come within a few days",
           }}
         ></SectionIntro>
         <div className="mt-10">
