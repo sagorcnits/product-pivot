@@ -16,7 +16,7 @@ const QueriesCard = ({ querie }) => {
 
   
   return (
-    <div className="relative flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 queries-card md:h-[550px]">
+    <div className="relative flex flex-col font-Inter p-6 space-y-6 overflow-hidden rounded-lg cursor-pointer box-shadow duration-500 queries-card md:h-[550px]  ">
       <div className="md:h-[500px]">
         <figure className="rounded-md overflow-hidden h-[200px]">
           <img className="w-full h-full" src={imageURL} alt="" />

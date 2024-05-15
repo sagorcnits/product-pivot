@@ -78,7 +78,7 @@ const Queries = () => {
       </div>
 
       <div
-        className={`grid md:grid-cols-2 lg:grid-cols-${layout} ${
+        className={`grid  md:grid-cols-2 lg:grid-cols-${layout} ${
           layout == 4 ? "gap-2" : "gap-10 "
         } ${layout == 4 ? "mt-10" : "mt-10"}`}
       >
