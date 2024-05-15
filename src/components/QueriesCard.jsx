@@ -64,7 +64,7 @@ const QueriesCard = ({ querie }) => {
         </button>
       </div>
 
-      <div className="absolute queries-button duration-500 -bottom-[200px] left-0 right-0 overflow-hidden   bg-orange-400 text-center ">
+      <div className="absolute queries-button duration-500 -bottom-[200px] left-0 right-0 overflow-hidden    text-center ">
         <Link to={`/querydetails/${_id}`}>
           <button className="button w-full ">Recommend</button>
         </Link>

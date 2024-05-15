@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../components/AuthProvider";
 import QueriesCard from "../../components/QueriesCard";
 const imgUrl =
   "https://img.freepik.com/free-photo/online-marketing_53876-95308.jpg?t=st=1715333855~exp=1715337455~hmac=b07b2be266bee1378bab786eddbbe4e8fa7eef51c352252d5fde750f1db2320b&w=740";
 const Queries = () => {
+  const {localTheme} = useContext(AuthContext)
   const queriesData = useLoaderData();
   const [allQuery, setAllQuery] = useState([]);
   const [inputValue, setInputValue] = useState(null);
@@ -47,7 +49,7 @@ const Queries = () => {
         <h1 className="mt-14 text-white font-Inter text-[30px] md:text-[40px]">
           All Queries
         </h1>
-        <div className="md:w-[40%] w-[90%] mx-auto mt-10 flex justify-between items-center px-2 rounded-lg bg-white">
+        <div className={`md:w-[40%] w-[90%] mx-auto mt-10 flex justify-between items-center px-2 rounded-lg     ${localTheme=="light" ? "bg-white" : "bg-[#121212]"}`}>
           <input
             type="text"
             placeholder="Search Your Product"

@@ -2,7 +2,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
@@ -10,45 +10,56 @@ import { auth } from "../firebase";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-const [user,setUser] = useState([])
-const [loaded, setLoaded] = useState(false)
-const [dataLoad,setDataLoad] = useState(true)
-// create user 
+  const [user, setUser] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const [dataLoad, setDataLoad] = useState(true);
+  const [localTheme, setLocalTheme] = useState(() => {
+    const initialTheme = localStorage.getItem("theme");
+    return initialTheme ? initialTheme : "light";
+  });
+  // create user
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-// login user 
+  // login user
   const signInUser = (email, password) => {
-    setDataLoad(true)
+    setDataLoad(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
- 
-
-//   logout user 
+  //   logout user
   const signOutUser = () => {
-    setDataLoad(true)
+    setDataLoad(true);
     signOut(auth)
       .then()
       .catch((error) => {
-        console.log(error.message)
+        console.log(error.message);
       });
   };
 
-// curren user information
-  useEffect(()=>{
-     const changeAuth = onAuthStateChanged(auth,(currentUser) => {
-        setUser(currentUser)
-        console.log(user)
-        setDataLoad(false)
-     })
-     return () => {
-        changeAuth()
-     }
-  },[loaded])
+  // curren user information
+  useEffect(() => {
+    const changeAuth = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setDataLoad(false);
+    });
+    return () => {
+      changeAuth();
+    };
+  }, [loaded]);
 
-  const authInfo = { createUser,signInUser, signOutUser, user, setLoaded, loaded , dataLoad};
+  const authInfo = {
+    createUser,
+    signInUser,
+    signOutUser,
+    user,
+    setLoaded,
+    loaded,
+    dataLoad,
+    localTheme,
+    setLocalTheme,
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

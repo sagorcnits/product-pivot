@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider";
 
 const Navbar = () => {
-  const { user, signOutUser} = useContext(AuthContext);
+  const { user, signOutUser,setLocalTheme} = useContext(AuthContext);
   const [theme, setTheme] = useState(() => {
     const initialTheme = localStorage.getItem("theme");
     return initialTheme ? initialTheme : "light";
@@ -18,13 +18,15 @@ const Navbar = () => {
   const handleTheme = (e) => {
     if (e.target.checked) {
       setTheme("dark");
+      setLocalTheme("dark")
     } else {
       setTheme("light");
+      setLocalTheme("light")
     }
   };
 
   return (
-    <div className="border-b py-2">
+    <div className="border-b border-dashed py-2">
       <div className="navbar max-w-7xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">

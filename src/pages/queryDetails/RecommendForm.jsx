@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../components/AuthProvider";
 const RecommendForm = ({ detail }) => {
-  const { user,setLoaded, loaded } = useContext(AuthContext);
+  const { user,setLoaded, loaded ,localTheme} = useContext(AuthContext);
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -54,7 +54,7 @@ const RecommendForm = ({ detail }) => {
   };
 
   return (
-    <div className="md:w-[470px] w-full p-2 md:p-6  border bg-white">
+    <div className={`md:w-[470px] w-full p-2 md:p-6  border ${localTheme=="light" ? "bg-white" : "bg-[#1D232A] border-[#838181]"}`}>
       <div className="mb-4 text-center">
         <h1 className="text-[25px] md:text-[30px]  font-Inter font-bold">
           Add Recommendation
@@ -68,7 +68,9 @@ const RecommendForm = ({ detail }) => {
               type="text"
               name="title"
               placeholder="Product title"
-              className="w-full px-3 py-2 border rounded-md "
+              className={`w-full px-3 py-2 border rounded-md ${
+                localTheme == "light" ? "bg-white" : "bg-[#1D232A] border-[#838181]"
+              }`}
             />
           </div>
           <div>
@@ -77,7 +79,9 @@ const RecommendForm = ({ detail }) => {
               type="text"
               name="productName"
               placeholder="Product Name"
-              className="w-full px-3 py-2 border rounded-md "
+              className={`w-full px-3 py-2 border rounded-md ${
+                localTheme == "light" ? "bg-white" : "bg-[#1D232A] border-[#838181]"
+              }`}
             />
           </div>
           <div>
@@ -86,7 +90,9 @@ const RecommendForm = ({ detail }) => {
               type="text"
               name="imageURl"
               placeholder="Product Image-URL"
-              className="w-full px-3 py-2 border rounded-md "
+              className={`w-full px-3 py-2 border rounded-md ${
+                localTheme == "light" ? "bg-white" : "bg-[#1D232A] border-[#838181]"
+              }`}
             />
           </div>
           <div>
@@ -95,7 +101,10 @@ const RecommendForm = ({ detail }) => {
               type="text"
               name="recommendation"
               placeholder="Recommendation reason"
-              className="w-full h-[150px] md:h-[200px] overflow-auto px-3 py-2 border rounded-md resize-none"
+              
+              className={`w-full h-[150px] md:h-[200px] overflow-auto px-3 py-2 border rounded-md resize-none ${
+                localTheme == "light" ? "bg-white" : "bg-[#1D232A] border-[#838181]"
+              }`}
             />
           </div>
         </div>
