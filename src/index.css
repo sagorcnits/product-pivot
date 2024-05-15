@@ -44,4 +44,9 @@
   .myQuery-card:hover .effect-card {
     transform: scale(1);
   }
+
+  .active {
+    text-decoration: underline;
+    color: #2ca48b;
+  }
 }

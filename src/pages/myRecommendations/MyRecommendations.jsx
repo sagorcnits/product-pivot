@@ -8,7 +8,7 @@ const MyRecommendations = () => {
   const { user } = useContext(AuthContext);
   const [myCommendsData, setMyCommendsData] = useState([]);
   const [reload, setReload] = useState(false);
-
+  const [isActive,setActive] = useState(false)
   useEffect(() => {
     axios
       .get("https://product-pivot-server.vercel.app/recommendation", {withCredentials:true})
@@ -18,6 +18,7 @@ const MyRecommendations = () => {
           (item) => item.userEmail === user.email
         );
         setMyCommendsData(myCommendsData);
+        setActive(true)
       })
       .catch((error) => {
         console.log(error);
@@ -68,7 +69,7 @@ const MyRecommendations = () => {
         }}
       ></SectionIntro>
 
-      {myCommendsData.length > 0 ? (
+      {isActive ? myCommendsData.length > 0 ? (
         <>
           <section className="mt-16">
             <div className="overflow-auto">
@@ -77,9 +78,9 @@ const MyRecommendations = () => {
                   <tr className=" *:text-[19px] font-Inter">
                     <th></th>
                     <th>Product Name</th>
-                    <th>title</th>
-                    <th>creatorEmail</th>
-                    <th>creatorName</th>
+                    <th>Title</th>
+                    <th>TreatorEmail</th>
+                    <th>CreatorName</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -120,7 +121,7 @@ const MyRecommendations = () => {
             </figure>
           </div>
         </>
-      )}
+      ) : <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin bg-bgColor mx-auto mt-20"></div>}
     </div>
   );
 };

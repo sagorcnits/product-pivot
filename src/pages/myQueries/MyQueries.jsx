@@ -13,7 +13,7 @@ const MyQueries = () => {
   const [userData, setUserData] = useState([]);
   const [isDelete, setDelete] = useState(false);
   const { user } = useContext(AuthContext);
-
+const [isActive,setActive] = useState(false)
   useEffect(() => {
     axios
       .get(`https://product-pivot-server.vercel.app/addquery/${user.email}`,  {withCredentials:true})
@@ -27,6 +27,7 @@ const MyQueries = () => {
           return mainTimeB - mainTimeA;
         });
         setUserData(sortArr);
+        setActive(true)
       })
       .catch((error) => console.log(error.message));
   }, [isDelete]);
@@ -86,7 +87,7 @@ const MyQueries = () => {
               "",
           }}
         ></SectionIntro>
-        {userData.length > 0 ? (
+        { isActive ?  userData.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
             {userData?.map((querie, id) => (
               <MyQueryCard
@@ -109,7 +110,7 @@ const MyQueries = () => {
               <button className="button">Add Ouery</button>
             </Link>
           </div>
-        )}
+        ) : <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin bg-bgColor mx-auto mt-20"></div>}
       </section>
     </div>
   );

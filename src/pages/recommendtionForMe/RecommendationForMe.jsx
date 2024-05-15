@@ -6,7 +6,7 @@ import SectionIntro from "../../components/SectionIntro";
 const RecommendationForMe = () => {
   const [recommendForMe, setRecommendForMe] = useState([]);
   const { user } = useContext(AuthContext);
-
+  const [isActive,setActive] = useState(false)
   useEffect(() => {
     axios
       .get("https://product-pivot-server.vercel.app/recommendation", {withCredentials:true})
@@ -16,6 +16,7 @@ const RecommendationForMe = () => {
           (item) => item.creatorEmail === user.email
         );
         setRecommendForMe(filterForMe);
+        setActive(true)
       })
       .catch((error) => {
         console.log(error.message);
@@ -34,7 +35,7 @@ const RecommendationForMe = () => {
 
       <section>
         <div className="overflow-hidden">
-          {recommendForMe.length > 0 ? (
+          {isActive ? recommendForMe.length > 0 ? (
             <>
               <section className="mt-16">
                 <div className="overflow-auto">
@@ -44,8 +45,8 @@ const RecommendationForMe = () => {
                         <th></th>
                         <th>Product Name</th>
                         <th>Title</th>
-                        <th>CreatorEmail</th>
-                        <th>CreatorName</th>
+                        <th>Reccomendor Email</th>
+                        <th>Reccomendor Name</th>
                         <th>Date</th>
                       </tr>
                     </thead>
@@ -56,8 +57,8 @@ const RecommendationForMe = () => {
                             <td>{id + 1}</td>
                             <td>{recommend.productName}</td>
                             <td>{recommend.title}</td>
-                            <td>{recommend.creatorEmail}</td>
-                            <td>{recommend.creatorName}</td>
+                            <td>{recommend.userEmail}</td>
+                            <td>{recommend.userName}</td>
                             <td>{recommend.date}</td>
                           </tr>
                         );
@@ -79,7 +80,7 @@ const RecommendationForMe = () => {
                 </figure>
               </div>
             </>
-          )}
+          ) : <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin bg-bgColor mx-auto mt-20"></div>}
         </div>
       </section>
     </div>
