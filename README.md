@@ -9,9 +9,11 @@
 
 ### 3 Best Features of project
 
-- Decending Order Query Card of the all Queries Page
-- Table of the Recommendation For Me Page
-- This Website have a Private Route for users
+- ProductPivot facilitates collaborative feedback by allowing users to post details about their products that need improvement or are not performing well. Other users can then provide suggestions, insights, and recommendations for enhancing those products.
+
+- Enables users to provide feedback and discuss products, fostering collaboration and enhancing decision-making in product management and development processes.
+
+- A Private Route on ProductPivot ensures that sensitive or personalized content is protected from unauthorized access. Users must first authenticate themselves, usually by logging in with credentials such as a username and password. Once authenticated, they gain access to specific pages, features, or data that are relevant to their role or permissions.
 
 ### Using Technology
 
